@@ -34,7 +34,7 @@ class User extends Model implements UserAttributes {
 	declare createdAt?: Date;
 	declare updatedAt?: Date;
 
-	static async hashPassword(password: string): Promise {
+	static async hashPassword(password: string): Promise<string> {
 		const saltRounds = 10;
 		return await bcrypt.hash(password, saltRounds);
 	}
