@@ -20,8 +20,6 @@ interface UserAttributes {
 	updatedAt?: Date;
 }
 
-interface UserCreationAttributes extends Optional {}
-
 class User extends Model implements UserAttributes {
 	declare id: string;
 	declare name: string;
