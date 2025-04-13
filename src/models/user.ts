@@ -63,6 +63,11 @@ User.init(
 		password: {
 			type: DataTypes.STRING,
 			allowNull: false,
+			validate: {
+				notEmpty: true,
+				notNull: true,
+				len: [6, 250],
+			},
 		},
 		role: {
 			type: DataTypes.ENUM('admin', 'user'),
