@@ -22,6 +22,7 @@ export const createUser = async () => {
 		return;
 	}
 
+	// Create a user with the company and sector
 	await User.create({
 		name: 'User 1',
 		email: 'HtH2x@example.com',
@@ -32,6 +33,8 @@ export const createUser = async () => {
 	});
 };
 
+// Create a demand for the user
+// This is used to test the create demand endpoint
 export const createDemand = async () => {
 	// Find the user by email
 	// and include the company and sector
@@ -45,6 +48,8 @@ export const createDemand = async () => {
 		],
 	});
 
+	// Check if the user exists
+	// and if the user has a company and sector
 	if (!user) {
 		throw new Error('User not found');
 	}
