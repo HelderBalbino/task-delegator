@@ -54,7 +54,9 @@ export const createDemand = async () => {
 		throw new Error('User not found');
 	}
 
+	// Check if the user has a company and sector
 	if (!user.company || !user.sector) {
+		// If the user does not have a company or sector, we cannot create a demand
 		throw new Error('User has no company or sector');
 	}
 
