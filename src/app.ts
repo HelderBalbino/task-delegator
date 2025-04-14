@@ -1,6 +1,7 @@
 import { createDemand, createUser } from './test/test';
 import sequelize from './config/db';
 
+// Import the sequelize instance
 const createTables = async () => {
 	try {
 		await sequelize.sync({ force: true });
