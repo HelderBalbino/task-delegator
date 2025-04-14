@@ -4,6 +4,7 @@ import sequelize from './config/db';
 // Import the sequelize instance
 const createTables = async () => {
 	try {
+		// Create the tables
 		await sequelize.sync({ force: true });
 		console.log('tables were successfully created!');
 	} catch (error) {
