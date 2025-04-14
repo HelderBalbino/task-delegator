@@ -17,7 +17,6 @@ const createTables = async () => {
 
 const startServer = async () => {
 	await createTables();
-
 	await createUser();
 	await createDemand();
 };
