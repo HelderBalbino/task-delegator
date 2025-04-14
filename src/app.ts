@@ -7,7 +7,9 @@ const createTables = async () => {
 		// Create the tables
 		await sequelize.sync({ force: true });
 		console.log('tables were successfully created!');
+		//
 	} catch (error) {
+		// Handle any errors that occur during table creation
 		console.error('Error when creating table:', error);
 	}
 };
