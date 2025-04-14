@@ -10,6 +10,7 @@ const createTables = async () => {
 		//
 	} catch (error) {
 		// Handle any errors that occur during table creation
+		// Log the error to the console
 		console.error('Error when creating table:', error);
 	}
 };
