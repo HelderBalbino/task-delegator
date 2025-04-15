@@ -168,3 +168,28 @@ class UserController {
               res.status(500).json({ error: "Erro ao buscar dependentes" });
             }
           }
+
+          static async getUserById(req: Request, res: Response) {
+            try {
+              const { id } = req.params;
+              const userId = req.user.id;
+              const user = await User.findByPk(id);
+        
+              if (!user) {
+                res.status(404).json({ error: "Usuário não encontrado" });
+                return;
+              }
+        
+              if (user.primary_user_id !== userId && user.id !== userId) {
+                res.status(403).json({
+                  error:
+                    "Usuário sem permissão para visualizar o perfil de outro usuário.",
+                });
+                return;
+              }
+        
+              res.json(user);
+            } catch (error) {
+              res.status(500).json({ error: "Erro ao buscar usuário" });
+            }
+          }
