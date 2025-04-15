@@ -43,3 +43,24 @@ class UserController {
           res.status(500).json({ error: "Erro ao cadastrar usuário" });
         }
       }
+
+      static async registerDependent(req: Request, res: Response) {
+        try {
+          const { name, email, password } = req.body;
+    
+          const userId = req.user.id; // O ID do admin que está criando o dependente
+    
+          // Verificando se o usuário que está criando o dependente é um admin
+          const adminUser = await User.findByPk(userId, {
+            include: [
+              { model: Company, as: "company" },
+              { model: Sector, as: "sector" },
+            ],
+          });
+    
+          if (!adminUser || adminUser.role !== "admin") {
+            res.status(403).json({
+              error: "Apenas administradores podem cadastrar dependentes.",
+            });
+            return;
+          }
