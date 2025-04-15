@@ -133,3 +133,38 @@ class UserController {
               res.status(500).json({ error: "Erro ao realizar login" });
             }
           }
+
+          static async getAllUsersByAdmin(req: Request, res: Response) {
+            try {
+              const userId = req.user.id;
+        
+              // Verificando se o usuário logado é um administrador
+              const adminUser = await User.findByPk(userId);
+        
+              if (!adminUser || adminUser.role !== "admin") {
+                return res.status(403).json({
+                  error: "Somente administradores podem visualizar seus dependentes.",
+                });
+              }
+        
+              // Buscando todos os dependentes (usuários com primary_user_id igual ao adminId)
+              const dependents = await User.findAll({
+                where: {
+                  primary_user_id: adminUser.id,
+                },
+                attributes: ["id", "name"], // Selecionando apenas os campos necessários
+              });
+        
+              // Caso não existam dependentes
+              if (dependents.length === 0) {
+                return res
+                  .status(404)
+                  .json({ message: "Nenhum dependente encontrado" });
+              }
+        
+              res.status(200).json(dependents);
+            } catch (error) {
+              console.error(error);
+              res.status(500).json({ error: "Erro ao buscar dependentes" });
+            }
+          }
