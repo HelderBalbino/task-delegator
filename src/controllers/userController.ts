@@ -64,3 +64,21 @@ class UserController {
             });
             return;
           }
+
+            // Criando o dependente (usuário subordinado)
+            const dependent = await User.create({
+                name,
+                email,
+                password: password,
+                role: "user", // Dependentes terão o papel de "user"
+                sector_id: adminUser.sector_id,
+                company_id: adminUser.company_id,
+                primary_user_id: adminUser.id, // Associa o dependente ao usuário principal (admin)
+              });
+        
+              res.status(201).json(dependent);
+            } catch (error) {
+              console.error(error);
+              res.status(500).json({ error: "Erro ao cadastrar dependente" });
+            }
+          }
