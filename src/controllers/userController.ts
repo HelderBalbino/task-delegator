@@ -106,3 +106,30 @@ class UserController {
                 res.status(401).json({ error: "Credenciais inválidas" });
                 return;
               }
+
+              const companyName = user.company?.name; // Acessando o nome da empresa
+              const sectorName = user.sector?.name; // Acessando o nome do setor
+        
+              const token = jwt.sign(
+                {
+                  id: user.id,
+                  role: user.role,
+                  userParent: user.primary_user_id,
+                },
+                process.env.ACCESS_TOKEN_SECRET as string,
+                { expiresIn: "1h" }
+              );
+        
+              res.status(200).json({
+                token,
+                name: user.name,
+                role: user.role,
+                company: companyName,
+                sector: sectorName,
+              });
+            } catch (error) {
+              console.error(error);
+        
+              res.status(500).json({ error: "Erro ao realizar login" });
+            }
+          }
