@@ -193,3 +193,35 @@ class UserController {
               res.status(500).json({ error: "Erro ao buscar usuário" });
             }
           }
+
+          static async updateUser(req: Request, res: Response) {
+            try {
+              const { id } = req.params;
+              const userId = req.user.id;
+              const { name, email, password } = req.body;
+              const user = await User.findByPk(id);
+        
+              if (!user) {
+                res.status(404).json({ error: "Usuário não encontrado" });
+                return;
+              }
+        
+              if (user.primary_user_id !== userId && user.id !== userId) {
+                res.status(403).json({
+                  error:
+                    "Usuário sem permissão para atualizar o perfil de outro usuário.",
+                });
+                return;
+              }
+        
+              user.name = name || user.name;
+              user.email = email || user.email;
+              user.password = bcrypt.hashSync(password, 10);
+        
+              await user.save();
+        
+              res.json(user);
+            } catch (error) {
+              res.status(500).json({ error: "Erro ao atualizar usuário" });
+            }
+          }
