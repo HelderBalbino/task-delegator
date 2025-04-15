@@ -18,3 +18,28 @@ class UserController {
           res.status(400).json({ error: "Falha ao encontrar empresa" });
           return;
         }
+
+        const [sector, sectorCreated] = await Sector.findOrCreate({
+            where: { name: sector_name, company_id: company.id },
+          });
+    
+          if (!sectorCreated || !sector) {
+            res.status(400).json({ error: "Falha ao criar ou encontrar setor" });
+            return;
+          }
+    
+          const user = await User.create({
+            name,
+            email,
+            password: password,
+            role: "admin",
+            sector_id: sector.id,
+            company_id: company.id,
+          });
+    
+          res.status(201).json(user.createdAt);
+        } catch (error) {
+          console.log(error);
+          res.status(500).json({ error: "Erro ao cadastrar usuário" });
+        }
+      }
