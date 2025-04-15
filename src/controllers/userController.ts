@@ -82,3 +82,27 @@ class UserController {
               res.status(500).json({ error: "Erro ao cadastrar dependente" });
             }
           }
+
+          static async login(req: Request, res: Response) {
+            try {
+              const { email, password } = req.body;
+              const user = await User.findOne({
+                where: { email },
+                include: [
+                  { model: Company, as: "company" },
+                  { model: Sector, as: "sector" },
+                ],
+              });
+        
+              if (!user) {
+                res.status(401).json({ error: "Credenciais inválidas" });
+                return;
+              }
+        
+              const validPassword = await bcrypt.compare(password, user.password);
+              console.log(validPassword);
+        
+              if (!validPassword) {
+                res.status(401).json({ error: "Credenciais inválidas" });
+                return;
+              }
