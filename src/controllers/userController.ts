@@ -26,7 +26,7 @@ class UserController {
 
 			if (!sectorCreated || !sector) {
 				res.status(400).json({
-					error: 'Falha ao criar ou encontrar setor',
+					error: 'error in finding sector or creating sector',
 				});
 				return;
 			}
