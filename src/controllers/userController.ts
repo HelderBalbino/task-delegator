@@ -111,7 +111,7 @@ class UserController {
 			}
 
 			const companyName = user.company?.name; // accessing the company's name
-			const sectorName = user.sector?.name; // Acessando o nome do setor
+			const sectorName = user.sector?.name; // accessing the sector's name
 
 			const token = jwt.sign(
 				{
