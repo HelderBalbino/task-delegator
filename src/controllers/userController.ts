@@ -68,12 +68,12 @@ class UserController {
 				return;
 			}
 
-			// Criando o dependente (usuário subordinado)
+			// creating the dependent user
 			const dependent = await User.create({
 				name,
 				email,
 				password: password,
-				role: 'user', // Dependentes terão o papel de "user"
+				role: 'user', // dependents are regular users
 				sector_id: adminUser.sector_id,
 				company_id: adminUser.company_id,
 				primary_user_id: adminUser.id, // Associa o dependente ao usuário principal (admin)
