@@ -16,7 +16,7 @@ class UserController {
 			});
 
 			if (!company) {
-				res.status(400).json({ error: 'Falha ao encontrar empresa' });
+				res.status(400).json({ error: 'error in finding company' });
 				return;
 			}
 
