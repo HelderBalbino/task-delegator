@@ -53,7 +53,7 @@ class UserController {
 
 			const userId = req.user.id; //Id of logged in user
 
-			// Verificando se o usuário que está criando o dependente é um admin
+			// verifying if the logged in user is an admin
 			const adminUser = await User.findByPk(userId, {
 				include: [
 					{ model: Company, as: 'company' },
