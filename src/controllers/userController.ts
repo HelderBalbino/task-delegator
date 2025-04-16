@@ -82,7 +82,7 @@ class UserController {
 			res.status(201).json(dependent);
 		} catch (error) {
 			console.error(error);
-			res.status(500).json({ error: 'Erro ao cadastrar dependente' });
+			res.status(500).json({ error: 'error in registering dependent' });
 		}
 	}
 
