@@ -51,7 +51,7 @@ class UserController {
 		try {
 			const { name, email, password } = req.body;
 
-			const userId = req.user.id; // O ID do admin que está criando o dependente
+			const userId = req.user.id; //Id of logged in user
 
 			// Verificando se o usuário que está criando o dependente é um admin
 			const adminUser = await User.findByPk(userId, {
