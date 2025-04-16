@@ -76,7 +76,7 @@ class UserController {
 				role: 'user', // dependents are regular users
 				sector_id: adminUser.sector_id,
 				company_id: adminUser.company_id,
-				primary_user_id: adminUser.id, // Associa o dependente ao usuário principal (admin)
+				primary_user_id: adminUser.id, // associating the dependent with the admin user
 			});
 
 			res.status(201).json(dependent);
