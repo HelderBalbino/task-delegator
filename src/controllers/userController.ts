@@ -98,7 +98,7 @@ class UserController {
 			});
 
 			if (!user) {
-				res.status(401).json({ error: 'Credenciais inválidas' });
+				res.status(401).json({ error: 'invalid credentials' });
 				return;
 			}
 
