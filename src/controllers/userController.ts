@@ -43,7 +43,7 @@ class UserController {
 			res.status(201).json(user.createdAt);
 		} catch (error) {
 			console.log(error);
-			res.status(500).json({ error: 'Erro ao cadastrar usuário' });
+			res.status(500).json({ error: 'error in registering user' });
 		}
 	}
 
