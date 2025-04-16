@@ -63,7 +63,7 @@ class UserController {
 
 			if (!adminUser || adminUser.role !== 'admin') {
 				res.status(403).json({
-					error: 'Apenas administradores podem cadastrar dependentes.',
+					error: 'Only administrators can create dependents.',
 				});
 				return;
 			}
