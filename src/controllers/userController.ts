@@ -133,7 +133,7 @@ class UserController {
 		} catch (error) {
 			console.error(error);
 
-			res.status(500).json({ error: 'Erro ao realizar login' });
+			res.status(500).json({ error: 'Error in login authentication' });
 		}
 	}
 
@@ -141,7 +141,7 @@ class UserController {
 		try {
 			const userId = req.user.id;
 
-			// Verificando se o usuário logado é um administrador
+			// Verifying if the logged in user is an admin
 			const adminUser = await User.findByPk(userId);
 
 			if (!adminUser || adminUser.role !== 'admin') {
