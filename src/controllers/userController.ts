@@ -245,7 +245,7 @@ class UserController {
 			}
 
 			await user.destroy();
-			res.json({ message: 'Usuário deletado com sucesso' });
+			res.json({ message: 'User deleted successfully' });
 		} catch (error) {
 			res.status(500).json({ error: 'Erro ao deletar usuário' });
 		}
