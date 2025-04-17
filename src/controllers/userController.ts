@@ -163,10 +163,11 @@ class UserController {
 				return res.status(404).json({ message: 'No dependents found' });
 			}
 
+			// Returning the list of dependents
 			res.status(200).json(dependents);
 		} catch (error) {
 			console.error(error);
-			res.status(500).json({ error: 'Erro ao buscar dependentes' });
+			res.status(500).json({ error: 'Error in finding dependents' });
 		}
 	}
 
