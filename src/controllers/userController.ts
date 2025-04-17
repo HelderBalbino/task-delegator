@@ -106,7 +106,7 @@ class UserController {
 			console.log(validPassword);
 
 			if (!validPassword) {
-				res.status(401).json({ error: 'Credenciais inválidas' });
+				res.status(401).json({ error: 'Invalid credentials' });
 				return;
 			}
 
