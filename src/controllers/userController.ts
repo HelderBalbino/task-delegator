@@ -191,7 +191,7 @@ class UserController {
 
 			res.json(user);
 		} catch (error) {
-			res.status(500).json({ error: 'Erro ao buscar usuário' });
+			res.status(500).json({ error: 'Error in finding user' });
 		}
 	}
 
