@@ -239,7 +239,7 @@ class UserController {
 
 			if (user.primary_user_id !== userId && user.id !== userId) {
 				res.status(403).json({
-					error: 'Usuário sem permissão para atualizar o perfil de outro usuário.',
+					error: 'user without permission to delete another user profile.',
 				});
 				return;
 			}
