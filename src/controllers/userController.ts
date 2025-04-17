@@ -146,7 +146,7 @@ class UserController {
 
 			if (!adminUser || adminUser.role !== 'admin') {
 				return res.status(403).json({
-					error: 'Somente administradores podem visualizar seus dependentes.',
+					error: 'Only administrators can view all users.',
 				});
 			}
 
