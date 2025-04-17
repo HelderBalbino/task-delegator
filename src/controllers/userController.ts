@@ -155,7 +155,7 @@ class UserController {
 				where: {
 					primary_user_id: adminUser.id,
 				},
-				attributes: ['id', 'name'], // Selecionando apenas os campos necessários
+				attributes: ['id', 'name'], // selecting only the id and name of the dependents
 			});
 
 			// Caso não existam dependentes
