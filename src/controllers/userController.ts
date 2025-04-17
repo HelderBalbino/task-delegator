@@ -184,7 +184,7 @@ class UserController {
 
 			if (user.primary_user_id !== userId && user.id !== userId) {
 				res.status(403).json({
-					error: 'Usuário sem permissão para visualizar o perfil de outro usuário.',
+					error: 'user without permission to view another user profile.',
 				});
 				return;
 			}
