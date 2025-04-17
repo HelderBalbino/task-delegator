@@ -158,11 +158,9 @@ class UserController {
 				attributes: ['id', 'name'], // selecting only the id and name of the dependents
 			});
 
-			// Caso não existam dependentes
+			// Verifying if there are any dependents
 			if (dependents.length === 0) {
-				return res
-					.status(404)
-					.json({ message: 'Nenhum dependente encontrado' });
+				return res.status(404).json({ message: 'No dependents found' });
 			}
 
 			res.status(200).json(dependents);
