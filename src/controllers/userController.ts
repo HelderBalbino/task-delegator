@@ -150,7 +150,7 @@ class UserController {
 				});
 			}
 
-			// Buscando todos os dependentes (usuários com primary_user_id igual ao adminId)
+			// Fetching all users associated with the admin user
 			const dependents = await User.findAll({
 				where: {
 					primary_user_id: adminUser.id,
