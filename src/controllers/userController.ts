@@ -144,9 +144,10 @@ class UserController {
 			const adminUser = await User.findByPk(userId);
 
 			if (!adminUser || adminUser.role !== 'admin') {
-				return res.status(403).json({
+				res.status(403).json({
 					error: 'Only administrators can view all users.',
 				});
+				return;
 			}
 
 			// Fetching all users associated with the admin user
@@ -159,7 +160,8 @@ class UserController {
 
 			// Verifying if there are any dependents
 			if (dependents.length === 0) {
-				return res.status(404).json({ message: 'No dependents found' });
+				res.status(404).json({ message: 'No dependents found' });
+				return;
 			}
 
 			// Returning the list of dependents
