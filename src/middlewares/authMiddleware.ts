@@ -20,7 +20,6 @@ const authenticate = async (
 			token,
 			process.env.ACCESS_TOKEN_SECRET as string,
 		) as { id: string };
-		console.log(decoded, 'decoded');
 		const user_id = decoded.id;
 
 		// verifying if the user exists
