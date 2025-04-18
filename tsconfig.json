@@ -10,7 +10,7 @@
     "moduleResolution": "node", // how node modules are resolved
     "esModuleInterop": true, // Habilita importações de módulos no estilo ES
     "skipLibCheck": true, // Ignora a verificação de tipos nas bibliotecas
-    "forceConsistentCasingInFileNames": true, // Garante que os nomes dos arquivos sejam consistentes
+    "forceConsistentCasingInFileNames": true, // enforce consistent casing in file names
     "strict": true, // enable all strict type-checking options
     "outDir": "./dist", // where to output the compiled files
     "allowJs": true, // allow JavaScript files to be compiled
