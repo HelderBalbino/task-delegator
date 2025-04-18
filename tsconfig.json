@@ -5,7 +5,7 @@
       "node_modules/@types",
       "src/types" // this directory must contain the file express.d.ts
     ],
-    "target": "ESNext", // Use recursos mais recentes do ECMAScript
+    "target": "ESNext", // define the target version of JavaScript
     "module": "CommonJS", // Garantir compatibilidade com Node.js
     "moduleResolution": "node", // Como o Node.js resolve os módulos
     "esModuleInterop": true, // Habilita importações de módulos no estilo ES
