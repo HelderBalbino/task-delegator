@@ -22,7 +22,7 @@ const authenticate = async (
 		) as { id: string };
 		const user_id = decoded.id;
 
-		// verifying if the user exists
+		// verifying if the user exists and has a 'primary_user_id'
 		const user = await User.findByPk(user_id);
 		console.log(user, 'user');
 
