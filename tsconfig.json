@@ -13,8 +13,8 @@
     "forceConsistentCasingInFileNames": true, // Garante que os nomes dos arquivos sejam consistentes
     "strict": true, // Habilita todas as verificações de tipo
     "outDir": "./dist", // Onde os arquivos compilados serão gerados
-    "allowJs": true, // Permite arquivos JS ao lado de TS
-    "resolveJsonModule": true // Permite importar arquivos JSON
+    "allowJs": true, // allow JavaScript files to be compiled
+    "resolveJsonModule": true // allow JSON imports
   },
   "include": [
     "src/**/*.ts"
