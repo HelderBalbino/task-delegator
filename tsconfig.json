@@ -3,7 +3,7 @@
     "typeRoots": [
       "@types",
       "node_modules/@types",
-      "src/types" // Este diretório deve conter o arquivo express.d.ts
+      "src/types" // this directory must contain the file express.d.ts
     ],
     "target": "ESNext", // Use recursos mais recentes do ECMAScript
     "module": "CommonJS", // Garantir compatibilidade com Node.js
