@@ -7,7 +7,7 @@
     ],
     "target": "ESNext", // define the target version of JavaScript
     "module": "CommonJS", // assure compatibility with Node.js
-    "moduleResolution": "node", // Como o Node.js resolve os módulos
+    "moduleResolution": "node", // how node modules are resolved
     "esModuleInterop": true, // Habilita importações de módulos no estilo ES
     "skipLibCheck": true, // Ignora a verificação de tipos nas bibliotecas
     "forceConsistentCasingInFileNames": true, // Garante que os nomes dos arquivos sejam consistentes
