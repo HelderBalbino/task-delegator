@@ -28,4 +28,22 @@ class TaskController {
             .status(403)
             .json({ error: "Only admins can create tasks" });
           return;
-        } }
+        } 
+
+              // creating a task
+              const task = await Task.create({
+                title,
+                description,
+                status,
+                sector_id,
+                company_id,
+                assigned_to_id,
+                admin_id: req.user.id,
+              });
+
+              res.status(201).json(task);
+            } catch (error) {
+              console.error(error);
+              res.status(500).json({ error: "error creating task" });
+            }
+          }
