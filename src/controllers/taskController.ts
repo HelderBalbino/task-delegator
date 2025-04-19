@@ -111,3 +111,33 @@ class TaskController {
                   res.status(500).json({ error: "Error updating task status" });
                 }
               }
+
+              static async completeTask(req: Request, res: Response) {
+                try {
+                  const { id } = req.params; 
+                  const userId = req.user.id;
+    
+                  // Buscar a tarefa pelo ID
+                  const task = await Task.findByPk(id);
+                  if (!task) {
+                    res.status(404).json({ error: "Task not found" });
+                    return;
+                  }
+    
+                  if (task.assigned_to_id !== userId) {
+                    res
+                      .status(403)
+                      .json({ error: "Only the user assigned to the task can update it" });
+                    return;
+                  }
+    
+                  
+                  task.status = "completed"; 
+                  await task.save(); 
+    
+                  res.status(200).json({ message: "Task conclude successfully", task });
+                } catch (error) {
+                  console.error(error);
+                  res.status(500).json({ error: "Error updating task status" });
+                }
+              }
