@@ -139,7 +139,7 @@ class TaskController {
 			await task.save();
 
 			res.status(200).json({
-				message: 'Task conclude successfully',
+				message: 'Task concluded successfully',
 				task,
 			});
 		} catch (error) {
