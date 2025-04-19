@@ -47,3 +47,37 @@ class TaskController {
               res.status(500).json({ error: "error creating task" });
             }
           }
+
+            // list all tasks and paginate
+            static async getTasksByPage(req: Request, res: Response) {
+                try {
+                  const { page } = req.params;
+                  const userId = req.user.id;
+                  const pageSize = 15; // Number of tasks per page
+                  const offset = (parseInt(page) - 1) * pageSize;
+    
+                  const tasks = await Task.findAll({
+                    where: {
+                      [Op.or]: [
+                        { assigned_to_id: userId }, // the task can be assigned to the user
+                        { admin_id: userId }, // or the task can be created by the user
+                      ],
+                    },
+                    limit: pageSize,
+                    offset: offset,
+                    include: [
+                      {
+                        model: User,
+                        as: "assignedUser",
+                        attributes: ["id", "name", "email"],
+                      }, 
+                    ],
+                    attributes: ["id", "title", "description", "status", "sector_id"],
+                  });
+    
+                  res.status(200).json(tasks);
+                } catch (error) {
+                  console.error(error);
+                  res.status(500).json({ error: "Error fetching tasks" });
+                }
+              }
