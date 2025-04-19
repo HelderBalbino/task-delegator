@@ -81,3 +81,33 @@ class TaskController {
                   res.status(500).json({ error: "Error fetching tasks" });
                 }
               }
+
+              static async inProgressTask(req: Request, res: Response) {
+                try {
+                  const { id } = req.params; 
+                  const userId = req.user.id;
+    
+                  // search for the task by id
+                  const task = await Task.findByPk(id);
+                  if (!task) {
+                    res.status(404).json({ error: "Task not found" });
+                    return;
+                  }
+                  if (task.assigned_to_id !== userId) {
+                    res
+                      .status(403)
+                      .json({ error: "only the user assigned to the task can update it" });
+                    return;
+                  }
+    
+                  //update the task status to "in_progress"
+                  // and save it to the database
+                  task.status = "in_progress"; 
+                  await task.save(); // save the task to the database
+    
+                  res.status(200).json({ message: "Task in progress", task });
+                } catch (error) {
+                  console.error(error);
+                  res.status(500).json({ error: "Error updating task status" });
+                }
+              }
