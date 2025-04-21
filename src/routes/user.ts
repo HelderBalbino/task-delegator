@@ -4,4 +4,6 @@ import authenticate from '../middlewares/authMiddleware';
 
 const router = Router();
 
+router.post('/register', UserController.register);
+
 export default router;
