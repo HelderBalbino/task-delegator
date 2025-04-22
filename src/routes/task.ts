@@ -7,4 +7,10 @@ const router = Router();
 router.post('/task', authenticate, TaskController.createTask);
 router.get('/tasks/:page', authenticate, TaskController.getTasksByPage);
 
+router.put(
+	'/task/in_progress/:id',
+	authenticate,
+	TaskController.inProgressTask,
+);
+
 export default router;
