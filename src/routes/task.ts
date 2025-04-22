@@ -4,4 +4,6 @@ import authenticate from '../middlewares/authMiddleware';
 
 const router = Router();
 
+router.post('/task', authenticate, TaskController.createTask);
+
 export default router;
