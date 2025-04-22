@@ -13,5 +13,6 @@ router.put(
 	TaskController.inProgressTask,
 );
 router.put('/task/complete/:id', authenticate, TaskController.completeTask);
+router.put('/task/:id', authenticate, TaskController.updateTask);
 
 export default router;
