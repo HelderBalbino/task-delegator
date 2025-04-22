@@ -1,3 +1,5 @@
+// Description: This file defines the routes for task-related operations.
+// It includes routes for creating, updating, deleting, and retrieving tasks.
 import { Router } from 'express';
 import TaskController from '../controllers/taskController';
 import authenticate from '../middlewares/authMiddleware';
