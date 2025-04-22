@@ -14,5 +14,6 @@ router.put(
 );
 router.put('/task/complete/:id', authenticate, TaskController.completeTask);
 router.put('/task/:id', authenticate, TaskController.updateTask);
+router.delete('/task/:id', authenticate, TaskController.deleteTask);
 
 export default router;
