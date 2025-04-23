@@ -4,18 +4,18 @@ import { Router } from 'express';
 import TaskController from '../controllers/taskController';
 import authenticate from '../middlewares/authMiddleware';
 
-const router = Router();
+const taskRoutes = Router();
 
-router.post('/task', authenticate, TaskController.createTask);
-router.get('/tasks/:page', authenticate, TaskController.getTasksByPage);
+taskRoutes.post('/task', authenticate, TaskController.createTask);
+taskRoutes.get('/tasks/:page', authenticate, TaskController.getTasksByPage);
 
-router.put(
+taskRoutes.put(
 	'/task/in_progress/:id',
 	authenticate,
 	TaskController.inProgressTask,
 );
-router.put('/task/complete/:id', authenticate, TaskController.completeTask);
-router.put('/task/:id', authenticate, TaskController.updateTask);
-router.delete('/task/:id', authenticate, TaskController.deleteTask);
+taskRoutes.put('/task/complete/:id', authenticate, TaskController.completeTask);
+taskRoutes.put('/task/:id', authenticate, TaskController.updateTask);
+taskRoutes.delete('/task/:id', authenticate, TaskController.deleteTask);
 
-export default router;
+export default taskRoutes;
