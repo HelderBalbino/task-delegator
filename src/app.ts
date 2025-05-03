@@ -12,12 +12,12 @@ app.use(express.json());
 
 // cors configuration
 app.use(
-// 	cors({
-// 		origin: [/http:\/\/localhost:\d+$/], //only allow localhost
-// 		methods: 'GET,POST,PUT,DELETE', // Allowed methods
-// 		credentials: true, // Allow credentials
-// 	}),
-// );
+	cors({
+		origin: [/http:\/\/localhost:\d+$/], //only allow localhost
+		methods: 'GET,POST,PUT,DELETE', // Allowed methods
+		credentials: true, // Allow credentials
+	}),
+);
 
 app.use('/users', userRoutes);
 app.use('/tasks', taskRoutes);
