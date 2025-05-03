@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 
 // cors configuration
-// app.use(
+app.use(
 // 	cors({
 // 		origin: [/http:\/\/localhost:\d+$/], //only allow localhost
 // 		methods: 'GET,POST,PUT,DELETE', // Allowed methods
